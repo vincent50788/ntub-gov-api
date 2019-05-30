@@ -78,13 +78,14 @@ WSGI_APPLICATION = 'topic_crawler.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "d86jg6jbd1a4q6",
-        'USER': "kimbrxznkhibhy",
-        'PASSWORD': "cba6bae221b0fede1fff1d560ae0fc9bafa634ba31e6f3ca4c1239c6ea3438a1",
-        'HOST': "ec2-184-72-237-95.compute-1.amazonaws.com",
+        'NAME': "db7pcd9v2dl915",
+        'USER': "qavyefluuzpebh",
+        'PASSWORD': "705ea584327daef9b8f6ae4784b87625d13d99d8c681ce5a360286f75fe918f0",
+        'HOST': "ec2-75-101-147-226.compute-1.amazonaws.com",
         'PORT': "5432",
     }
 }
+
 '''
         {
         'ENGINE': 'django.db.backends.sqlite3',
