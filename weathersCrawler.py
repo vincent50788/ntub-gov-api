@@ -1,3 +1,9 @@
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "topic_crawler.settings")
+
+import django
+django.setup()
+
 import json
 from weathers.models import Weathers
 import requests
@@ -34,4 +40,3 @@ def insert():
     print('the end')
 
 
-insert()
