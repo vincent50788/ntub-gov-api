@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath topic_crawler topic_crawler.wsgi
