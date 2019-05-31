@@ -1,12 +1,13 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from django.http import HttpResponse
 import pandas as pd
 import psycopg2
 
+
 # Create your views here.
 
 
-def get_data():  # 撈資料
+def get_data():  # 從資料庫撈資料
     df = pd.DataFrame(columns=['SiteName', 'County', 'AQI', 'Status', 'WindSpeed', 'WindDir', 'Date', 'Time', 'Longitude', 'Latitude'])
     conn = psycopg2.connect("postgres://qavyefluuzpebh:705ea584327daef9b8f6ae4784b87625d13d99d8c681ce5a360286f75fe918f0@ec2-75-101-147-226.compute-1.amazonaws.com:5432/db7pcd9v2dl915")
     cur = conn.cursor()
@@ -32,7 +33,7 @@ def get_data():  # 撈資料
     return data
 
 
-def weathers_request(request):
+def weathers_request(request):  # 傳前端
     return HttpResponse(get_data())
 
 
