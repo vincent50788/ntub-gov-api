@@ -1,6 +1,7 @@
 # Import all default settings.
-from .settings import *
+# Heroku 設定檔
 
+from .settings import *
 import dj_database_url
 DATABASES = {
     'default': dj_database_url.config(),
