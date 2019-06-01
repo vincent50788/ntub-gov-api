@@ -15,13 +15,13 @@ def get_data():  # 從資料庫撈資料
     cur.close()
     conn.close()
     for a in results:
-        unleaded = a[1]  # 測站名稱
-        super = a[2]  # 地區
-        supreme = (a[3])
-        alcohol_gas = a[4]  # 品質狀態
-        diesel = a[5]  # 風速
-        liquefied_gas = a[6]  # 風向
-        date = a[7]  # 發布時間
+        unleaded = a[1]
+        super = a[2]
+        supreme = a[3]
+        alcohol_gas = a[4]
+        diesel = a[5]
+        liquefied_gas = a[6]
+        date = a[7]
         time = a[8]
 
         s = pd.Series([unleaded, super, supreme, alcohol_gas, diesel, liquefied_gas, date, time],
