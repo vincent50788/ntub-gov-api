@@ -9,9 +9,9 @@ import json
 import requests
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
-
-from weathers.models import Weathers  # weathersDB
-from oils.models import Oils  # oilsDB
+# DB
+from weathers.models import Weathers
+from oils.models import Oils
 from alerts.models import Alerts
 
 dateTime_ = datetime.now() + timedelta(hours=8)
@@ -19,7 +19,7 @@ theTime = dateTime_.strftime('%H:%M')
 theDate = dateTime_.strftime('%Y-%m-%d')
 
 
-def weather_crawler():  # 環境Crawler
+def weather_crawler():
     url = "https://opendata.epa.gov.tw/webapi/Data/REWIQA/?$orderby=SiteName&$skip=0&$top=1000&format=json"
     re = requests.get(url, verify=False)
     js = json.loads(re.content)
@@ -44,16 +44,14 @@ def weather_crawler():  # 環境Crawler
         if windspeed_ == "":
            windspeed_ = 0
 
-        if Weathers.objects.all().exists():
-            Weathers.objects.filter(sitename=site_).update(county=county_, aqi=aqi_, status=status_, windspeed=windspeed_,
-                                                            winddir=winddir_, date=date_, time=time_, longitude=longitude_, latitude=latitude_)
-        else:
-            Weathers.objects.create(sitename=site_, county=county_, aqi=aqi_, status=status_, windspeed=windspeed_,
-                                    winddir=winddir_, date=date_, time=time_, longitude=longitude_, latitude=latitude_)
-    print('weather_crawler')
+        Weathers.objects.filter(sitename=site_).update(county=county_, aqi=aqi_, status=status_, windspeed=windspeed_,
+                                                        winddir=winddir_, date=date_, time=time_, longitude=longitude_, latitude=latitude_)
+
+        # Weathers.objects.create(sitename=site_, county=county_, aqi=aqi_, status=status_, windspeed=windspeed_,
+        #                         winddir=winddir_, date=date_, time=time_, longitude=longitude_, latitude=latitude_)
 
 
-def oil_crawler():  # oilCrawler
+def oil_crawler():
     url = "https://www.cpc.com.tw/Default.aspx"
     re = requests.get(url, verify=False)
     soup = BeautifulSoup(re.content)
@@ -70,10 +68,9 @@ def oil_crawler():  # oilCrawler
     else:
         Oils.objects.create(unleaded=dic_['92無鉛'], super=dic_['95無鉛'], supreme=dic_['98無鉛'], alcohol_gas=dic_['酒精汽油'],
                             diesel=dic_['超級柴油'], liquefied_gas=dic_['液化石油氣'], date=theDate, time=theTime)
-    print('oil_crawler')
 
 
-def alert_crawler():  # oilCrawler
+def alert_crawler():
     url = "https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/W-C0033-001?Authorization=CWB-242E2AA6-F542-43E1-973D-9A0A4DBB7E5E&downloadType=WEB&format=JSON"
     re = requests.get(url, verify=False)
     js = json.loads(re.content)
@@ -88,11 +85,12 @@ def alert_crawler():  # oilCrawler
             hazard = hazardConditions['hazards']['info']['phenomena']
             affectedAreas = hazardConditions['hazards']['hazard']['info']['affectedAreas']['location']['locationName']
             phenomena = hazardConditions['hazards']['hazard']['info']['phenomena']
-            # startTime = hazardConditions['hazards']['validTime']['startTime']
+            # startTime = hazardConditions['hazards']['validTime']['startTime']  # 警報有效時間
             # endTime = hazardConditions['hazards']['validTime']['endTime']
 
-        Alerts.objects.create(city=locationName, hazard=hazard, affectedareas=affectedAreas, phenomena=phenomena,
-                                  date=theDate, time=theTime)
+        # Alerts.objects.create(city=locationName, hazard=hazard, affectedareas=affectedAreas, phenomena=phenomena,
+        #                       date=theDate, time=theTime)
 
+        Alerts.objects.filter(city=locationName).update(hazard=hazard, affectedareas=affectedAreas, phenomena=phenomena,
+                                                        date=theDate, time=theTime)
 
-alert_crawler()
