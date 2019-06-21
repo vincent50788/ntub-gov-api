@@ -4,7 +4,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "topic_crawler.settings")
 
 import django
 django.setup()
-
+# package
 import json
 import requests
 from datetime import datetime, timedelta
@@ -45,29 +45,30 @@ def weather_crawler():
            windspeed_ = 0
 
         Weathers.objects.filter(sitename=site_).update(county=county_, aqi=aqi_, status=status_, windspeed=windspeed_,
-                                                        winddir=winddir_, date=date_, time=time_, longitude=longitude_, latitude=latitude_)
-
-        # Weathers.objects.create(sitename=site_, county=county_, aqi=aqi_, status=status_, windspeed=windspeed_,
-        #                         winddir=winddir_, date=date_, time=time_, longitude=longitude_, latitude=latitude_)
+                                                       winddir=winddir_, date=date_, time=time_, longitude=longitude_,
+                                                       latitude=latitude_)
+'''
+        Weathers.objects.create(sitename=site_, county=county_, aqi=aqi_, status=status_, windspeed=windspeed_, 
+                                winddir=winddir_, date=date_, time=time_, longitude=longitude_, latitude=latitude_)
+'''
 
 
 def oil_crawler():
-    url = "https://www.cpc.com.tw/Default.aspx"
+    url = "https://www.cpc.com.tw/GetOilPriceJson.aspx?type=TodayOilPriceString"
+    # url = "https://www2.moeaboe.gov.tw/oil102/oil2017/newmain.asp"
     re = requests.get(url, verify=False)
-    soup = BeautifulSoup(re.content)
-    data = soup.find_all("div", class_="today_price_info")
-    dic_ = {}
-    for a in data:
-        title = a.find("b", class_="name").text
-        price = a.find("b", class_="price").text
-        dic_[title] = float(price)
+    js = json.loads(re.content)
+    unleaded = js['sPrice1']
+    super_ = js['sPrice2']
+    supreme = js['sPrice3']
+    alcohol_gas = js['sPrice4']
+    diesel = js['sPrice5']
+    liquefied_gas = js['sPrice6']
 
-    if Oils.objects.all().exists():
-        Oils.objects.all().update(unleaded=dic_['92無鉛'], super=dic_['95無鉛'], supreme=dic_['98無鉛'], alcohol_gas=dic_['酒精汽油'],
-                                diesel=dic_['超級柴油'], liquefied_gas=dic_['液化石油氣'], date=theDate, time=theTime)
-    else:
-        Oils.objects.create(unleaded=dic_['92無鉛'], super=dic_['95無鉛'], supreme=dic_['98無鉛'], alcohol_gas=dic_['酒精汽油'],
-                            diesel=dic_['超級柴油'], liquefied_gas=dic_['液化石油氣'], date=theDate, time=theTime)
+    print(unleaded, super_, supreme, alcohol_gas, diesel, liquefied_gas)
+
+    Oils.objects.all().update(unleaded= unleaded, super=super_, supreme=supreme, alcohol_gas=alcohol_gas,
+                              diesel=diesel, liquefied_gas=liquefied_gas, date=theDate, time=theTime)
 
 
 def alert_crawler():
@@ -76,21 +77,20 @@ def alert_crawler():
     js = json.loads(re.content)
     data = js["cwbopendata"]["dataset"]["location"]
     for a in data:
-        locationName = a['locationName']
-        hazardConditions = a['hazardConditions']
+        locationName = a['locationName']  # 地點
+        hazardConditions = a['hazardConditions']  # 警報情形dic
 
         startTime, endTime, hazard, phenomena, affectedAreas = "", "", "", "", ""
 
-        if type(hazardConditions) == dict:
-            hazard = hazardConditions['hazards']['info']['phenomena']
-            affectedAreas = hazardConditions['hazards']['hazard']['info']['affectedAreas']['location']['locationName']
-            phenomena = hazardConditions['hazards']['hazard']['info']['phenomena']
+        if type(hazardConditions) == dict:  # 如果有警報
+            hazard = hazardConditions['hazards']['info']['phenomena']  # 警報情況 大雨
+
             # startTime = hazardConditions['hazards']['validTime']['startTime']  # 警報有效時間
             # endTime = hazardConditions['hazards']['validTime']['endTime']
 
         # Alerts.objects.create(city=locationName, hazard=hazard, affectedareas=affectedAreas, phenomena=phenomena,
-        #                       date=theDate, time=theTime)
+                                    # date=theDate, time=theTime)
 
-        Alerts.objects.filter(city=locationName).update(hazard=hazard, affectedareas=affectedAreas, phenomena=phenomena,
-                                                        date=theDate, time=theTime)
+        Alerts.objects.filter(city=locationName).update(hazard=hazard, date=theDate, time=theTime)
+
 

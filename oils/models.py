@@ -23,4 +23,3 @@ class Oils(models.Model):
         db_table = 'oils'
 
 
-
