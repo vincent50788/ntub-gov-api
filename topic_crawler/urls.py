@@ -15,13 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from weathers.views import weathers_request
+from aqi_quality.views import aqi_request
 from oils.views import oils_request
 from alerts.views import alert_request
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('weathers/', weathers_request),
+    path('aqi/', aqi_request),
     path('oils/', oils_request),
     path('alerts/', alert_request),
 ]

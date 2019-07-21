@@ -8,9 +8,9 @@ django.setup()
 import json
 import requests
 from datetime import datetime, timedelta
-from bs4 import BeautifulSoup
+
 # DB
-from weathers.models import Weathers
+from aqi_quality.models import AqiQuality
 from oils.models import Oils
 from alerts.models import Alerts
 
@@ -19,37 +19,70 @@ theTime = dateTime_.strftime('%H:%M')
 theDate = dateTime_.strftime('%Y-%m-%d')
 
 
-def weather_crawler():
+def aqi_crawler():
     url = "https://opendata.epa.gov.tw/webapi/Data/REWIQA/?$orderby=SiteName&$skip=0&$top=1000&format=json"
     re = requests.get(url, verify=False)
     js = json.loads(re.content)
+
     for a in js:
-        site_ = a['SiteName']  # 測站名稱
-        county_ = a['County']  # 地區
-        aqi_ = (a['AQI'])
-        status_ = a['Status']  # 品質狀態
-        windspeed_ = a['WindSpeed']  # 風速
-        winddir_ = a['WindDirec']  # 風向
-        date_ = a['PublishTime'].split(' ')[0]
-        time_ = a['PublishTime'].split(' ')[1]
-        longitude_ = a['Longitude']
-        latitude_ = a['Latitude']
+        site = a['SiteName']  # 測站名稱
+        county = a['County']  # 地區
+        aqi = a['AQI']
+        pollutant = a['Pollutant']
+        status = a['Status']  # 品質狀態
+        pmten = a['PM10']
+        pmtwo = a['PM2.5']
+        wind_speed = a['WindSpeed']  # 風速
+        wind_dic = a['WindDirec']  # 風向
+        pmten_avg = a['PM10_AVG']
+        pmtwo_avg = a['PM2.5_AVG']
+        longitude = a['Longitude']
+        latitude = a['Latitude']
+        date = a['PublishTime'].split(' ')[0]
+        time = a['PublishTime'].split(' ')[1]
 
-        if aqi_ == "":
-            aqi_ = 0
+        if aqi == "":
+            aqi = 0
+        else:
+            aqi = int(aqi)
+        if pmten == "":
+            pmten = 0
+        else:
+            pmten = int(pmten)
+        if pmtwo == "":
+            pmtwo = 0
+        else:
+            pmtwo = int(pmten)
+        if pmten == "":
+            pmten = 0
+        else:
+            pmten = int(pmten)
+        if wind_dic == "":
+            wind_dic = 0
+        else:
+            wind_dic = float(wind_dic)
+        if wind_speed == "":
+            wind_speed = 0
+        else:
+            wind_speed = float(wind_speed)
+        if pmtwo_avg == "":
+            pmtwo_avg = 0
+        else:
+            pmtwo_avg = int(pmtwo_avg)
+        if pmten_avg == "":
+            pmten_avg = 0
+        else:
+            pmten_avg = int(pmten_avg)
 
-        if winddir_ == "":
-            winddir_ = 0
+        AqiQuality.objects.filter(sitename=site).update(county=county, aqi=aqi, pollutant=pollutant, status=status,
+                                    pm10=pmten, pm25=pmtwo, wind_speed=wind_speed, wind_dict=wind_dic, pm10_avg=pmten_avg,
+                                    pm25_avg=pmtwo_avg, longitude=longitude, latitude=latitude, date=date, time=time)
 
-        if windspeed_ == "":
-           windspeed_ = 0
 
-        Weathers.objects.filter(sitename=site_).update(county=county_, aqi=aqi_, status=status_, windspeed=windspeed_,
-                                                       winddir=winddir_, date=date_, time=time_, longitude=longitude_,
-                                                       latitude=latitude_)
 '''
-        Weathers.objects.create(sitename=site_, county=county_, aqi=aqi_, status=status_, windspeed=windspeed_, 
-                                winddir=winddir_, date=date_, time=time_, longitude=longitude_, latitude=latitude_)
+        AqiQuality.objects.create(sitename=site, county=county, aqi=aqi, pollutant=pollutant, status=status,
+                                  pm10=pmten, pm25=pmtwo, wind_speed=wind_speed, wind_dict=wind_dic, pm10_avg=pmten_avg,
+                                  pm25_avg=pmtwo_avg, longitude=longitude, latitude=latitude, date=date, time=time)                                                       
 '''
 
 
@@ -65,8 +98,6 @@ def oil_crawler():
     diesel = js['sPrice5']
     liquefied_gas = js['sPrice6']
 
-    print(unleaded, super_, supreme, alcohol_gas, diesel, liquefied_gas)
-
     Oils.objects.all().update(unleaded= unleaded, super=super_, supreme=supreme, alcohol_gas=alcohol_gas,
                               diesel=diesel, liquefied_gas=liquefied_gas, date=theDate, time=theTime)
 
@@ -79,7 +110,6 @@ def alert_crawler():
     for a in data:
         locationName = a['locationName']  # 地點
         hazardConditions = a['hazardConditions']  # 警報情形dic
-
         startTime, endTime, hazard, phenomena, affectedAreas = "", "", "", "", ""
 
         if type(hazardConditions) == dict:  # 如果有警報
