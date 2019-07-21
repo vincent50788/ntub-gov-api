@@ -8,18 +8,27 @@
 from django.db import models
 
 
-class Weathers(models.Model):
+class AqiQuality(models.Model):
+    site_id = models.AutoField(primary_key=True)
     sitename = models.CharField(max_length=5, blank=True, null=True)
     county = models.CharField(max_length=5, blank=True, null=True)
     aqi = models.IntegerField(blank=True, null=True)
+    pollutant = models.CharField(max_length=10, blank=True, null=True)
     status = models.CharField(max_length=10, blank=True, null=True)
-    windspeed = models.FloatField(blank=True, null=True)
-    winddir = models.FloatField(blank=True, null=True)
-    date = models.DateField(blank=True, null=True)
-    time = models.TimeField(blank=True, null=True)
+    pm10 = models.IntegerField(blank=True, null=True)
+    pm25 = models.IntegerField(blank=True, null=True)
+    wind_speed = models.FloatField(blank=True, null=True)
+    wind_dict = models.FloatField(blank=True, null=True)
+    pm10_avg = models.IntegerField(blank=True, null=True)
+    pm25_avg = models.IntegerField(blank=True, null=True)
     longitude = models.FloatField(blank=True, null=True)
     latitude = models.FloatField(blank=True, null=True)
+    date = models.DateField(blank=True, null=True)
+    time = models.TimeField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'weathers'
+        db_table = 'aqi_quality'
+
+
+

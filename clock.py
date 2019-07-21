@@ -12,7 +12,7 @@ from superCrawler import *
 timez = pytz.timezone('Asia/Taipei')
 
 scheduler = BlockingScheduler(timezone=timez)
-scheduler.add_job(weather_crawler, trigger='interval', minutes=20)
+scheduler.add_job(aqi_crawler, trigger='interval', minutes=20)
 
 scheduler.add_job(oil_crawler, trigger='cron', hour='0-1', minute='0-59')
 
