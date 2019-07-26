@@ -50,8 +50,8 @@ def post_method(user_long, user_lat):
 
     for a in results:
         a = list(a)
-        long = a[12]
-        lat = a[13]
+        long = float(a[12])
+        lat = float(a[13])
         hypotenuse = (long-user_long)**2 + (lat-user_lat)**2
         hypotenuse_list.append(hypotenuse)
         a.append(hypotenuse)
