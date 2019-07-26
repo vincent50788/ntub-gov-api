@@ -42,37 +42,37 @@ def aqi_crawler():
         time = a['PublishTime'].split(' ')[1]
 
         if aqi == "":
-            aqi = 0
+            aqi = "0"
         else:
-            aqi = int(aqi)
+            aqi = str(aqi)
         if pmten == "":
-            pmten = 0
+            pmten = "0"
         else:
-            pmten = int(pmten)
+            pmten = str(pmten)
         if pmtwo == "":
-            pmtwo = 0
+            pmtwo = "0"
         else:
-            pmtwo = int(pmten)
+            pmtwo = str(pmten)
         if pmten == "":
-            pmten = 0
+            pmten = "0"
         else:
-            pmten = int(pmten)
+            pmten = str(pmten)
         if wind_dic == "":
-            wind_dic = 0
+            wind_dic = "0"
         else:
-            wind_dic = float(wind_dic)
+            wind_dic = str(wind_dic)
         if wind_speed == "":
-            wind_speed = 0
+            wind_speed = "0"
         else:
             wind_speed = float(wind_speed)
         if pmtwo_avg == "":
-            pmtwo_avg = 0
+            pmtwo_avg = "0"
         else:
-            pmtwo_avg = int(pmtwo_avg)
+            pmtwo_avg = str(pmtwo_avg)
         if pmten_avg == "":
-            pmten_avg = 0
+            pmten_avg = "0"
         else:
-            pmten_avg = int(pmten_avg)
+            pmten_avg = str(pmten_avg)
 
         AqiQuality.objects.filter(sitename=site).update(county=county, aqi=aqi, pollutant=pollutant, status=status,
                                     pm10=pmten, pm25=pmtwo, wind_speed=wind_speed, wind_dict=wind_dic, pm10_avg=pmten_avg,
@@ -124,3 +124,4 @@ def alert_crawler():
         Alerts.objects.filter(city=locationName).update(hazard=hazard, date=theDate, time=theTime)
 
 
+aqi_crawler()
