@@ -17,7 +17,8 @@ conn.close()
 
 def get_method():
     df = pd.DataFrame(columns=['SiteName', 'County', 'AQI', 'Pollutant', 'Status', 'PM10', 'PM2.5', 'WindSpeed', 'WindDir',
-                               'PM10_avg', 'PM2.5_avg', 'Longitude', 'Latitude', 'Date', 'Time'])
+                               'PM10_avg', 'PM2.5_avg', 'Longitude', 'Latitude', 'Date', 'Time', 'PM2.5_Status', 'So2', 'Co',
+                               'O3', 'So2_avg'])
     for a in results:
         site = a[1]  # 測站名稱
         county = a[2]  # 地區
@@ -34,11 +35,17 @@ def get_method():
         latitude = a[13]
         date = a[14]
         time = a[15]
+        pmtwo_status = a[16]
+        sotwo = a[17]
+        co = a[18]
+        othree = a[19]
+        sotwo_avg = a[20]
 
         s = pd.Series([site, county, aqi, pollutant, status, pmten, pmtwo, wind_speed, wind_dic, pmten_avg, pmtwo_avg,
-                       longitude, latitude, date, time],
+                       longitude, latitude, date, time, pmtwo_status, sotwo, co, othree, sotwo_avg],
                       index=['SiteName', 'County', 'AQI', 'Pollutant', 'Status', 'PM10', 'PM2.5', 'WindSpeed', 'WindDir',
-                               'PM10_avg', 'PM2.5_avg', 'Longitude', 'Latitude', 'Date', 'Time'])
+                               'PM10_avg', 'PM2.5_avg', 'Longitude', 'Latitude', 'Date', 'Time', 'PM2.5_Status', 'So2', 'Co',
+                               'O3', 'So2_avg'])
         df = df.append(s, ignore_index=True)
     data = df.to_html(index=False)
     return data
@@ -61,9 +68,11 @@ def post_method(user_long, user_lat):
 
     for b in data_list:
         if b[-1] == min_hy:
-            s = pd.Series([b[1], b[2], b[3], b[4], b[5], b[6], b[7], b[8], b[9], b[10], b[11], b[14], b[15]]
+            s = pd.Series([b[1], b[2], b[3], b[4], b[5], b[6], b[7], b[8], b[9], b[10], b[11], b[14], b[15], b[16], b[17],
+                           b[18], b[19], b[20]]
                           , index=['SiteName', 'County', 'AQI', 'Pollutant', 'Status', 'PM10', 'PM2.5', 'WindSpeed',
-                                   'WindDir', 'PM10_avg', 'PM2.5_avg', 'Date', 'Time'])
+                                   'WindDir', 'PM10_avg', 'PM2.5_avg', 'Date', 'Time', 'PM2.5_Status', 'So2', 'Co',
+                               'O3', 'So2_avg'])
             s = s.to_json(force_ascii=False)
             return s
 
