@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'aqi_quality',
     'oils',
     'alerts',
-    'weather'
+    'weather',
+    'dangerous_area',
 ]
 
 MIDDLEWARE = [
