@@ -1,15 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import pandas as pd
+import json
 import psycopg2
 
 # Create your views here.
 
-# 從資料庫撈資料
+# Connect DB
 conn = psycopg2.connect( "postgres://qavyefluuzpebh:705ea584327daef9b8f6ae4784b87625d13d99d8c681ce5a360286f75fe918f0@ec2-75-101-147-226.compute-1.amazonaws.com:5432/db7pcd9v2dl915")
 cur = conn.cursor()
 cur.execute("SELECT * FROM weather")
-results = cur.fetchall()  # 搜取所有结果
+results = cur.fetchall()  # search data
 cur.close()
 conn.close()
 
@@ -18,15 +19,15 @@ def get_method():
     df = pd.DataFrame(columns=['locationName', 'Longitude', 'Latitude', 'Wind_dir', 'Wind_speed', 'temp_now', 'humd', 'RainFall', 'UVI_H',
                                'temp_max', 'tmax_time', 'temp_min', 'tmin_time', 'uvi_status'])
     for a in results:
-        location = a[0]  # 測站名稱
-        longitude = a[1]  # 地區
+        location = a[0]  # siteName
+        longitude = a[1]
         latitude = a[2]
         wind_dir = a[3]
-        wind_speed = a[4]  # 品質狀態
+        wind_speed = a[4]
         temp_now = a[5]
         humd = a[6]
-        rainfall = a[7]  # 風速
-        uvi_h = a[8]  # 風向
+        rainfall = a[7]
+        uvi_h = a[8]
         temp_max = a[9]
         tmax_time = a[10]
         temp_min = a[11]
@@ -39,6 +40,7 @@ def get_method():
                                'temp_max', 'tmax_time', 'temp_min', 'tmin_time', 'uvi_status'])
         df = df.append(s, ignore_index=True)
     data = df.to_html(index=False)
+
     return data
 
 
@@ -63,14 +65,15 @@ def post_method(user_long, user_lat):
                           , index=['locationName', 'Longitude', 'Latitude', 'Wind_dir', 'Wind_speed', 'temp_now', 'humd', 'RainFall', 'UVI_H',
                                'temp_max', 'tmax_time', 'temp_min', 'tmin_time', 'uvi_status'])
             s = s.to_json(force_ascii=False)
-            return s
+    return s
 
 
 def weather_request(request):  # http request
+
     if request.method == 'POST':
-        user_long = request.POST.get('Longitude')
-        user_lat = request.POST.get('Latitude')
-        return HttpResponse(post_method(float(user_long), float(user_lat)))
+        user_long = request.POST.get("Longitude")
+        user_lat = request.POST.get("Latitude")
+        return HttpResponse(post_method(user_long, user_lat))
     else:
         return HttpResponse(get_method())
 

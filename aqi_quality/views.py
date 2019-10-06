@@ -1,5 +1,6 @@
 # from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 import pandas as pd
 import psycopg2
 
@@ -81,7 +82,7 @@ def aqi_request(request):  # 傳前端
     if request.method == 'POST':
         user_long = request.POST.get('Longitude')
         user_lat = request.POST.get('Latitude')
-        return HttpResponse(post_method(float(user_long), float(user_lat)))
+        return HttpResponse(post_method(user_long, user_lat), content_type='application/json')
     else:
         return HttpResponse(get_method())
 

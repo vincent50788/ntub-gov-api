@@ -19,12 +19,14 @@ from aqi_quality.views import aqi_request
 from oils.views import oils_request
 from alerts.views import alert_request
 from weather.views import weather_request
+from dangerous_area.views import dangerousArea_request
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('aqi/', aqi_request),
     path('oils/', oils_request),
     path('alerts/', alert_request),
-    path('weather/', weather_request)
+    path('weather/', weather_request),
+    path('dangerous/', dangerousArea_request)
 ]
 

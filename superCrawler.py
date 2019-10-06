@@ -1,19 +1,21 @@
-# 單獨執行.pyError
+# settings
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "topic_crawler.settings")
-
 import django
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "topic_crawler.settings")
 django.setup()
+
 # package
 import json
 import requests
 from datetime import datetime, timedelta
-import pyproj
-# DB
+
+# Table
 from aqi_quality.models import AqiQuality
 from oils.models import Oils
 from alerts.models import Alerts
 from weather.models import Weather
+from dangerous_area.models import DangerousArea
 
 dateTime_ = datetime.now() + timedelta(hours=8)
 theTime = dateTime_.strftime('%H:%M')
@@ -164,7 +166,7 @@ def alert_crawler():
 
         # Alerts.objects.create(city=locationName, hazard=hazard, affectedareas=affectedAreas, phenomena=phenomena,
                                     # date=theDate, time=theTime)
-
+        print(locationName, hazard)
         Alerts.objects.filter(city=locationName).update(hazard=hazard, date=theDate, time=theTime)
 
 
@@ -178,7 +180,7 @@ def weather_crawler():
         lon = str(a['lon'])  # 經緯度
         lat = str(a['lat'])
         locationName = a['locationName']  # 測站名稱
-        time = a['time']
+        # time = a['time']
         weather_element = a['weatherElement']  # 天氣 Array
         for b in weather_element:
             if b['elementName'] == 'WDIR':  # 風向
@@ -251,4 +253,14 @@ def weather_crawler():
                                tmax_time=tmax＿time, temp_min=temp_min, tmin_time=tmin_time)
         '''
 
+
+def dangerous_area():
+    # https://data.gov.tw/dataset/6247
+    url = "https://od.moi.gov.tw/api/v1/rest/datastore/A01010000C-000628-039"
+    re = requests.get(url)
+    js = json.loads(re.content)
+    data = js['result']['records']
+    for a in data:
+        adress = a['Address']
+        # DangerousArea.objects.create(location=adress)
 
