@@ -11,11 +11,7 @@ import requests
 from datetime import datetime, timedelta
 
 # Table
-from aqi_quality.models import AqiQuality
-from oils.models import Oils
-from alerts.models import Alerts
-from weather.models import Weather
-from dangerous_area.models import DangerousArea
+from ntubtopic.models import *
 
 dateTime_ = datetime.now() + timedelta(hours=8)
 theTime = dateTime_.strftime('%H:%M')
@@ -264,3 +260,5 @@ def dangerous_area():
         adress = a['Address']
         # DangerousArea.objects.create(location=adress)
 
+
+oil_crawler()
