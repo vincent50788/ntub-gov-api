@@ -37,11 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'aqi_quality',
-    'oils',
-    'alerts',
-    'weather',
-    'dangerous_area',
+    'ntubtopic',
 ]
 
 MIDDLEWARE = [
