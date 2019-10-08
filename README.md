@@ -1,27 +1,29 @@
 # topicbackground-NTUB
-專題的後端，串接多個API or 網頁爬蟲， 再整理給前端iOS/Android。
+Background of Topic
+
 ## superCrawler.py
-用來取得需要的資訊
+Web Crawler 
+
 ## clock.py
-定時執行superCrawler.py裡的function
+
 
 ## Heroku所需要的文檔
 ### requirements.txt 
-下指令建立
 > pip freeze > requirements.txt
 
 ### Procfile 
-新增Procfile文字檔，不能有副檔名。       
-web應用：
+Create Procfile
+web App：
 > web: gunicorn --pythonpath mysite mysite.wsgi  
 
-定時執行.py：       
+clock.py：       
 > clock: python clock.py
 
 
 ### production_settings.py
-mysite/mysite/底下新增production_settings.py      
-部署上去後，Heroku會使用這個production_settings.py
+create production_settings.py for Heroku
+mysite/mysite/production_settings.py 
+
 ```python
 # Import all default settings.
 from .settings import *
@@ -44,17 +46,121 @@ ALLOWED_HOSTS = ['*']
 DEBUG = False
 
 ```
-## Resource & DataBase
-### weathers
-> url = https://opendata.epa.gov.tw/webapi/Data/REWIQA/?$orderby=SiteName&$skip=0&$top=1000&format=json
-> views = https://topic-ntub.herokuapp.com/weathers
-### oils
-> url = https://www.cpc.com.tw/Default.aspx  
-> views = https://topic-ntub.herokuapp.com/oils/
-### alerts
-> url = https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/W-C0033-001?Authorization=CWB-242E2AA6-F542-43E1-973D-9A0A4DBB7E5E&downloadType=WEB&format=JSON   
-> views = https://topic-ntub.herokuapp.com/alerts/
+## Resource & API
+#### Weather Data
+> Resource = https://opendata.epa.gov.tw/webapi/Data/REWIQA/?$orderby=SiteName&$skip=0&$top=1000&format=json
+> API = https://topic-ntub.herokuapp.com/weather/
+
+#### Gas Price
+> Resource = https://www.cpc.com.tw/Default.aspx  
+> API = https://topic-ntub.herokuapp.com/gasprice/
+
+#### Warning
+> Resource = https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/W-C0033-001?Authorization=CWB-242E2AA6-F542-43E1-973D-9A0A4DBB7E5E&downloadType=WEB&format=JSON   
+> API = https://topic-ntub.herokuapp.com/warning/
+
+#### AQI 
+> Resource = https://opendata.epa.gov.tw/webapi/Data/REWIQA/?$orderby=SiteName&$skip=0&$top=1000&format=json 
+> API = https://topic-ntub.herokuapp.com/aqi/
+
+## Weather(天氣)
+request : 
+```json
+{
+    "Longitude": " ",
+    "Latitude": " "
+}
+```
+response :
+```json
+{
+    "result": 1,
+    "locationName": " ",
+    "windDir": " ",
+    "windSpeed": " ",
+    "tempNow": " ",
+    "humidity": " ",
+    "rainFall": " ",
+    "uviH": " ",
+    "uviStatus": " ",
+    "tempMax": " ",
+    "tempMaxTime": " ",
+    "tempMin": " ",
+    "tempMinTime": " "
+}
+```
 
 
+## AQI(空氣品質)
+request : 
+```json
+{
+    "Longitude": " ",
+    "Latitude": " "
+}
+```
+response :
+```json
+{
+    "result": 1,
+    "SiteName": " ",
+    "County": " ",
+    "AQI": " ",
+    "Pollutant": "",
+    "AQIStatus": " ",
+    "PM10": " ",
+    "PM2.5": " ",
+    "WindSpeed": " ",
+    "WindDir": " ",
+    "PM10Avg": " ",
+    "PM2.5Avg": " ",
+    "Date": " ",
+    "Time": " ",
+    "PM2.5Status": " ",
+    "So2": " ",
+    "Co": " ",
+    "O3": " ",
+    "So2Avg": " "
+}
+```
 
 
+## Warning(警報)
+request : 
+```json
+{
+    "Longitude": " ",
+    "Latitude": " "
+}
+```
+response :
+```json
+{
+    "result": 1,
+    "city": "基隆市",
+    "warning": "",
+    "date": "2019-10-08",
+    "time": "19:31:00"
+}
+```
+
+
+## GasPrice(油價)
+request : 
+```json
+{
+    "GetPrice": 1
+}
+```
+response :
+```json
+{
+   "result": 1,
+    "unleaded": "26.3",
+    "super_": "27.8",
+    "supreme": "29.8",
+    "alcoholGas": "27.8",
+    "diesel": "24.1",
+    "liquefiedGas": "16.6"
+}
+```
