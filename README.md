@@ -240,10 +240,10 @@ response :
 request : 
 ```json
 {
-    "Longitude": 120,
-    "Latitude": 25,
-    "contain": "1" ,
-    "type": "2" 
+    "Longitude": "",
+    "Latitude": "",
+    "contain": "" ,
+    "type": "" 
 }
 
 ```
