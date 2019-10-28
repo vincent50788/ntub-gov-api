@@ -40,7 +40,7 @@ def PostAqiQuality(request):
                 result['Date'] = b.date
                 result['Time'] = b.time
                 result['PM2.5Status'] = b.pmtwo_status
-                result['So2'] = b.status
+                result['So2'] = b.sotwo
                 result['Co'] = b.co
                 result['O3'] = b.othree
                 result['So2Avg'] = b.sotwo_avg

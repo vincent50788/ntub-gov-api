@@ -20,12 +20,16 @@ from ntubtopic.views import views_gas_price
 from ntubtopic.views import views_air_quality
 from ntubtopic.views import views_weather
 from ntubtopic.views import views_environmental_warning
+from ntubtopic.views import views_pre_weather
+from ntubtopic.views import views_partingNTPC
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('gasprice/', views_gas_price.PostOilPrice),
     path('aqi/', views_air_quality.PostAqiQuality),
     path('weather/', views_weather.PostWeather),
-    path('warning/', views_environmental_warning.PostEnvironmentalWarning)
+    path('warning/', views_environmental_warning.PostEnvironmentalWarning),
+    path('preweather/', views_pre_weather.PostPreWeather),
+    path('partNTPC/', views_partingNTPC.PostNTPCPart)
 ]
 
