@@ -3,46 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="e4eef716-0aca-4fc3-bd60-9723d94d6d32" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alerts/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ntubtopic/views/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alerts/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/alerts/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/alerts/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ntubtopic/views/views_air_quality.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alerts/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/alerts/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/alerts/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aqi_quality/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ntubtopic/views/views_environmental_warning.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aqi_quality/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aqi_quality/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aqi_quality/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ntubtopic/views/views_gas_price.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aqi_quality/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aqi_quality/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aqi_quality/views.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/clock.py" beforeDir="false" afterPath="$PROJECT_DIR$/clock.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dangerous_area/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ntubtopic/views/views_weather.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dangerous_area/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dangerous_area/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dangerous_area/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dangerous_area/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dangerous_area/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dangerous_area/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/oils/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/oils/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/oils/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/oils/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/oils/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/oils/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/oils/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ntubtopic/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ntubtopic/views/views_pre_weather.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ntubtopic/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ntubtopic/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ntubtopic/views/views_air_quality.py" beforeDir="false" afterPath="$PROJECT_DIR$/ntubtopic/views/views_air_quality.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ntubtopic/views/views_weather.py" beforeDir="false" afterPath="$PROJECT_DIR$/ntubtopic/views/views_weather.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/superCrawler.py" beforeDir="false" afterPath="$PROJECT_DIR$/superCrawler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/topic_crawler/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/topic_crawler/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/topic_crawler/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/topic_crawler/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather/views.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,42 +28,20 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/topic_crawler/urls.py">
+        <entry file="file://$PROJECT_DIR$/superCrawler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ntubtopic/views/views_weather.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+            <state relative-caret-position="69">
+              <caret line="384" column="34" lean-forward="true" selection-start-line="384" selection-start-column="34" selection-end-line="384" selection-end-column="34" />
               <folding>
-                <element signature="e#38#74#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/clock.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/topic_crawler/wsgi.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-              <folding>
-                <element signature="e#229#238#0" expanded="true" />
+                <element signature="e#11#20#0" expanded="true" />
+                <element signature="e#416#541#0" />
+                <element signature="e#567#3570#0" />
+                <element signature="e#3573#3981#1" />
+                <element signature="e#4007#4611#0" />
+                <element signature="e#4639#5745#0" />
+                <element signature="e#5775#9418#0" />
+                <element signature="e#9447#9758#0" />
+                <element signature="e#9784#14205#0" />
               </folding>
             </state>
           </provider>
@@ -110,40 +56,49 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/alertsView.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+            <state relative-caret-position="229">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/oilsView.html">
+        <entry file="file://$PROJECT_DIR$/ntubtopic/views/views_partingNTPC.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/weathersView.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/superCrawler.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="30" column="36" lean-forward="true" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+            <state relative-caret-position="-428">
+              <caret line="437" column="39" selection-start-line="437" selection-start-column="39" selection-end-line="437" selection-end-column="39" />
               <folding>
-                <element signature="e#11#20#0" expanded="true" />
+                <element signature="e#0#36#0" expanded="true" />
+                <element signature="e#923#1907#0" />
+                <element signature="e#8690#10413#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/topic_crawler/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="17" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="17" />
+              <folding>
+                <element signature="e#637#669#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ntubtopic/views/views_weather.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="111">
+              <caret line="53" column="3" selection-start-line="53" selection-start-column="3" selection-end-line="53" selection-end-column="3" />
+              <folding>
+                <element signature="e#38#74#0" expanded="true" />
+                <element signature="e#144#1437#0" />
               </folding>
             </state>
           </provider>
@@ -192,20 +147,23 @@
         <option value="$PROJECT_DIR$/weather/views.py" />
         <option value="$PROJECT_DIR$/ntubtopic/tests.py" />
         <option value="$PROJECT_DIR$/dangerous_area/views.py" />
-        <option value="$PROJECT_DIR$/ntubtopic/models.py" />
         <option value="$PROJECT_DIR$/oils/views.py" />
         <option value="$PROJECT_DIR$/ntubtopic/views.py" />
         <option value="$PROJECT_DIR$/aqi_quality/views.py" />
-        <option value="$PROJECT_DIR$/ntubtopic/views/views_weather.py" />
         <option value="$PROJECT_DIR$/ntubtopic/views/views_ environmental_warning.py" />
         <option value="$PROJECT_DIR$/ntubtopic/views/views_environmental_warning.py" />
         <option value="$PROJECT_DIR$/topic_crawler/settings.py" />
         <option value="$PROJECT_DIR$/ntubtopic/views/views_gas_price.py" />
-        <option value="$PROJECT_DIR$/superCrawler.py" />
-        <option value="$PROJECT_DIR$/ntubtopic/views/views_air_quality.py" />
         <option value="$PROJECT_DIR$/Procfile" />
-        <option value="$PROJECT_DIR$/topic_crawler/urls.py" />
+        <option value="$PROJECT_DIR$/ntubtopic/views/views_weather.py" />
         <option value="$PROJECT_DIR$/clock.py" />
+        <option value="$PROJECT_DIR$/ntubtopic/models.py" />
+        <option value="$PROJECT_DIR$/ntubtopic/views/views_pre_weather.py" />
+        <option value="$PROJECT_DIR$/ntubtopic/views/views_air_quality.py" />
+        <option value="$PROJECT_DIR$/ntubtopic/views/partingNTPC.py" />
+        <option value="$PROJECT_DIR$/topic_crawler/urls.py" />
+        <option value="$PROJECT_DIR$/superCrawler.py" />
+        <option value="$PROJECT_DIR$/ntubtopic/views/views_partingNTPC.py" />
       </list>
     </option>
   </component>
@@ -241,23 +199,7 @@
             <path>
               <item name="topic_crawler" type="b2602c69:ProjectViewProjectNode" />
               <item name="topic_crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="topic_crawler" type="b2602c69:ProjectViewProjectNode" />
               <item name="topic_crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="topic_crawler" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="topic_crawler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="topic_crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="topic_crawler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="topic_crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -287,7 +229,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.clock">
+  <component name="RunManager" selected="Python.superCrawler">
     <configuration name="clock" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="topic_crawler" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -354,28 +296,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="views (3)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="topic_crawler" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/oils" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/oils/views.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="views (4)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="topic_crawler" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -390,6 +310,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/aqi_quality/views.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="views_partingNTPC" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="topic_crawler" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ntubtopic/views" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ntubtopic/views/views_partingNTPC.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -426,17 +368,17 @@
       <item itemvalue="Django server.topic_crawler" />
       <item itemvalue="Python.superCrawler" />
       <item itemvalue="Python.views (1)" />
-      <item itemvalue="Python.views (3)" />
       <item itemvalue="Python.views (4)" />
       <item itemvalue="Python.clock" />
+      <item itemvalue="Python.views_partingNTPC" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.clock" />
         <item itemvalue="Python.superCrawler" />
+        <item itemvalue="Python.views_partingNTPC" />
+        <item itemvalue="Python.clock" />
         <item itemvalue="Python.views (4)" />
         <item itemvalue="Python.views (1)" />
-        <item itemvalue="Python.views (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -507,12 +449,20 @@
       <workItem from="1568994380950" duration="949000" />
       <workItem from="1570345196083" duration="293000" />
       <workItem from="1570349826677" duration="15194000" />
-      <workItem from="1570454070661" duration="6736000" />
+      <workItem from="1570454070661" duration="7490000" />
+      <workItem from="1570535443875" duration="7000" />
+      <workItem from="1570536194973" duration="570000" />
+      <workItem from="1571060758847" duration="970000" />
+      <workItem from="1571374717009" duration="18505000" />
+      <workItem from="1571548058090" duration="3134000" />
+      <workItem from="1571640378430" duration="20550000" />
+      <workItem from="1572186401078" duration="4394000" />
+      <workItem from="1572241291202" duration="6140000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188623000" />
+    <option name="totallyTimeSpent" value="243647000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -527,21 +477,21 @@
     <frame x="0" y="23" width="1440" height="823" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23032904" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.24964234" />
-      <window_info id="Favorites" order="2" side_tool="true" weight="0.3297568" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49604744" visible="true" weight="0.25679544" />
+      <window_info id="Structure" order="1" sideWeight="0.50395256" side_tool="true" weight="0.2532189" />
+      <window_info id="Favorites" order="2" sideWeight="0.5018797" side_tool="true" weight="0.24248926" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32968536" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4985694" weight="0.2872777" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3987952" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32831737" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32831737" />
-      <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32771084" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007153" side_tool="true" weight="0.37228915" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49928468" weight="0.27222982" />
+      <window_info anchor="bottom" id="Database Changes" order="9" weight="0.3269494" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50143063" side_tool="true" weight="0.2872777" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4985694" visible="true" weight="0.30779755" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32891566" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -585,29 +535,11 @@
     <SUITE FILE_PATH="coverage/topic_crawler$main.coverage" NAME="main Coverage Results" MODIFIED="1566126471051" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../air_tw" />
     <SUITE FILE_PATH="coverage/topic_crawler$views__2_.coverage" NAME="views (2) Coverage Results" MODIFIED="1568994618757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/weather" />
     <SUITE FILE_PATH="coverage/topic_crawler$views.coverage" NAME="views Coverage Results" MODIFIED="1568010333191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dangerous_area" />
-    <SUITE FILE_PATH="coverage/topic_crawler$superCrawler.coverage" NAME="superCrawler Coverage Results" MODIFIED="1570517220517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/topic_crawler$superCrawler.coverage" NAME="superCrawler Coverage Results" MODIFIED="1571666124617" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/topic_crawler$test.coverage" NAME="test Coverage Results" MODIFIED="1559214953963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/weathers" />
+    <SUITE FILE_PATH="coverage/topic_crawler$views_partingNTPC.coverage" NAME="views_partingNTPC Coverage Results" MODIFIED="1571643464634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ntubtopic/views" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11">
-          <caret line="783" selection-start-line="783" selection-end-line="783" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weathers/apps.py" />
-    <entry file="file://$PROJECT_DIR$/oils/apps.py" />
-    <entry file="file://$PROJECT_DIR$/alerts/tests.py" />
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-54" />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/alerts/models.py" />
     <entry file="file://$PROJECT_DIR$/oils/tests.py" />
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.7/site-packages/pandas/io/json/json.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -643,16 +575,6 @@
     <entry file="file://$PROJECT_DIR$/ntubtopic/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/topic_crawler/production_settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#45#68#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.7/site-packages/django/conf/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
@@ -669,103 +591,18 @@
     <entry file="file://$PROJECT_DIR$/ntubtopic/views/views_ environmental_warning.py" />
     <entry file="file://$PROJECT_DIR$/alerts/views.py" />
     <entry file="file://$PROJECT_DIR$/dangerous_area/views.py" />
-    <entry file="file://$PROJECT_DIR$/topic_crawler/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/ntubtopic/admin.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/ntubtopic/apps.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ntubtopic/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="90" column="28" selection-start-line="90" selection-start-column="28" selection-end-line="90" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ntubtopic/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/superCrawler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="30" column="36" lean-forward="true" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
-          <folding>
-            <element signature="e#11#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ntubtopic/views/views_gas_price.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="38" column="26" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ntubtopic/views/views_air_quality.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="37" lean-forward="true" selection-start-column="37" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ntubtopic/views/views_environmental_warning.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-          <folding>
-            <element signature="e#38#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Procfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/topic_crawler/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="195">
           <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
           <folding>
             <element signature="e#229#238#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ntubtopic/views/views_weather.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-          <folding>
-            <element signature="e#38#74#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -791,17 +628,159 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/topic_crawler/urls.py">
+    <entry file="file://$PROJECT_DIR$/topic_crawler/production_settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#45#68#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ntubtopic/migrations/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/topic_crawler/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/clock.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="195">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topic_crawler/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ntubtopic/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3480">
+          <caret line="232" column="44" selection-start-line="232" selection-start-column="44" selection-end-line="232" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ntubtopic/views/views_air_quality.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="39" column="39" lean-forward="true" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ntubtopic/apps.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ntubtopic/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ntubtopic/views/views_gas_price.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#144#617#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ntubtopic/views/views_environmental_warning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="56" lean-forward="true" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+          <folding>
+            <element signature="e#38#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ntubtopic/views/partingNTPC.py" />
+    <entry file="file://$PROJECT_DIR$/ntubtopic/views/views_pre_weather.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="642">
+          <caret line="46" column="36" lean-forward="true" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.7/site-packages/django/core/handlers/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1515">
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topic_crawler/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="17" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="17" />
+          <folding>
+            <element signature="e#637#669#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ntubtopic/views/views_weather.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="53" column="3" selection-start-line="53" selection-start-column="3" selection-end-line="53" selection-end-column="3" />
+          <folding>
+            <element signature="e#38#74#0" expanded="true" />
+            <element signature="e#144#1437#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ntubtopic/views/views_partingNTPC.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-428">
+          <caret line="437" column="39" selection-start-line="437" selection-start-column="39" selection-end-line="437" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#923#1907#0" />
+            <element signature="e#8690#10413#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/superCrawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="384" column="34" lean-forward="true" selection-start-line="384" selection-start-column="34" selection-end-line="384" selection-end-column="34" />
+          <folding>
+            <element signature="e#11#20#0" expanded="true" />
+            <element signature="e#416#541#0" />
+            <element signature="e#567#3570#0" />
+            <element signature="e#3573#3981#1" />
+            <element signature="e#4007#4611#0" />
+            <element signature="e#4639#5745#0" />
+            <element signature="e#5775#9418#0" />
+            <element signature="e#9447#9758#0" />
+            <element signature="e#9784#14205#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>

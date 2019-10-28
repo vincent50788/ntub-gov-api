@@ -18,6 +18,14 @@ theTime = dateTime_.strftime('%H:%M')
 theDate = dateTime_.strftime('%Y-%m-%d')
 
 
+def spl(value):  # split date & time
+    value = value.split(".", 1)[0]
+    date = value[0:10]
+    time = value[11:16]
+    timeList = [date, time]
+    return timeList
+
+
 def aqi_crawler():
     url = "https://opendata.epa.gov.tw/webapi/Data/REWIQA/?$orderby=SiteName&$skip=0&$top=1000&format=json"
     re = requests.get(url, verify=False)
@@ -261,4 +269,136 @@ def dangerous_area():
         # DangerousArea.objects.create(location=adress)
 
 
-oil_crawler()
+def pre_weather():
+    url = "https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=rdec-key-123-45678-011121314&format=JSON"
+    re = requests.get(url, verify=False)
+    js = json.loads(re.content)
+    data_set = js['cwbopendata']["dataset"]["location"]
+
+
+    for data in data_set:
+        location = data['locationName']
+        weather_element = data['weatherElement']
+
+        elements = weather_element[0]
+        times = elements['time']
+
+        # -----
+
+        wx_today_time = times[0]
+        today_startTime = spl(wx_today_time['startTime'])[1]
+        today_startDate = spl(wx_today_time['startTime'])[0]
+        today_endTime = spl(wx_today_time['endTime'])[1]
+        today_endDate = spl(wx_today_time['endTime'])[0]
+        today_wx = wx_today_time['parameter']['parameterName']
+
+        wx_today_time_ = times[1]
+        today_startDate_ = spl(wx_today_time_['startTime'])[0]
+        today_endDate_ = spl(wx_today_time_['endTime'])[0]
+        today_startTime_ = spl(wx_today_time_['startTime'])[1]
+        today_endTime_ = spl(wx_today_time_['endTime'])[1]
+        today_wx_ = wx_today_time_['parameter']['parameterName']
+
+        wx_tomorrow_time = times[2]
+        tomorrow_startTime = spl(wx_tomorrow_time['startTime'])[1]
+        tomorrow_endTime = spl(wx_tomorrow_time['endTime'])[1]
+        tomorrow_startDate = spl(wx_tomorrow_time['startTime'])[0]
+        tomorrow_endDate = spl(wx_tomorrow_time['endTime'])[0]
+        tomorrow_wx = wx_tomorrow_time['parameter']['parameterName']
+
+
+        maxT_elements = weather_element[1]
+        maxT_times = maxT_elements['time']
+
+        maxT_today_time = maxT_times[0]
+        today_maxT = maxT_today_time['parameter']['parameterName']
+
+        maxT_today_time_ = maxT_times[1]
+        today_maxT_ = maxT_today_time_['parameter']['parameterName']
+
+        maxT_tomorrow_time = maxT_times[2]
+        tomorrow_maxT = maxT_tomorrow_time['parameter']['parameterName']
+
+        # -----
+
+        minT_elements = weather_element[2]
+        minT_times = minT_elements['time']
+
+        minT_today_time = minT_times[0]
+        today_minT = minT_today_time['parameter']['parameterName']
+
+        minT_today_time_= minT_times[1]
+        today_minT_ = minT_today_time_['parameter']['parameterName']
+
+        minT_tomorrow_time = minT_times[2]
+        tomorrow_minT = minT_tomorrow_time['parameter']['parameterName']
+
+        # -----
+
+        pop_elements = weather_element[4]
+        pop_times = pop_elements['time']
+
+        pop_today_time = pop_times[0]
+        today_pop = pop_today_time['parameter']['parameterName']
+
+        pop_today_time_ = pop_times[1]
+        today_pop_ = pop_today_time_['parameter']['parameterName']
+
+        pop_tomorrow_time = pop_times[2]
+        tomorrow_pop = pop_tomorrow_time['parameter']['parameterName']
+
+        '''
+        PreWeather.objects.create(city=location, today_starttime=today_startTime, today_startdate=today_startDate, today_endtime=today_endTime,
+                                  today_enddate=today_endDate, today_starttime_field=today_startTime_, today_startdate_field=today_startDate,
+                                  today_endtime_field=today_endTime_, today_enddate_field=today_endDate_, tomorrow_startdate=tomorrow_startDate,
+                                  tomorrow_starttime=tomorrow_startTime, tomorrow_enddate=tomorrow_endDate, tomorrow_endtime=tomorrow_endTime,
+                                  )
+        '''
+
+        PreWeather.objects.filter(city=location).update(today_starttime=today_startTime, today_startdate=today_startDate, today_endtime=today_endTime,
+                                  today_enddate=today_endDate, today_starttime_field=today_startTime_, today_startdate_field=today_startDate,
+                                  today_endtime_field=today_endTime_, today_enddate_field=today_endDate_, tomorrow_startdate=tomorrow_startDate,
+                                  tomorrow_starttime=tomorrow_startTime, tomorrow_enddate=tomorrow_endDate, tomorrow_endtime=tomorrow_endTime,
+                                  today_maxt=today_maxT, today_maxt_field=today_maxT_, tomorrow_maxt=tomorrow_maxT, today_mint=today_minT,
+                                  today_mint_field=today_minT_, tomorrow_mint=tomorrow_minT, today_wx=today_wx, today_wx_field=today_wx_,
+                                  tomorrow_wx=tomorrow_wx, today_pop=today_pop, today_pop_field=today_pop_, tomorrow_pop =tomorrow_pop)
+
+
+def parting_ntpc():
+    url = "https://data.ntpc.gov.tw/od/data/api/1A71BA9C-EF21-4524-B882-6D085DF2877A?$format=json"
+    re = requests.get(url, verify=False)
+    partslist = []
+    js = json.loads(re.content)
+
+    for data in js:
+        name = data['NAME']  # 車格類型
+        day = data['DAY']  # 收費天
+        hour = data['HOUR']  # 收費時段
+        pay = data['PAY']
+        cash = data['PAYCASH']
+        memo = data['MEMO']
+        status = data['CELLSTATUS']  # 車格狀態判斷 T/F
+        cashStatus = data['ISNOWCASH']
+        parkingStatus = data['ParkingStatus']
+        if parkingStatus == "1":
+            parkingStatusZh = "有車"
+        elif parkingStatus == "2":
+            parkingStatusZh = "空位"
+        elif parkingStatus == "3":
+            parkingStatusZh = "非收費時段"
+        elif parkingStatus == "4":
+            parkingStatusZh = "時段性禁停"
+        else:
+            parkingStatusZh = "尚無資訊"
+
+        lon = data['lon']
+        lat = data['lat']
+
+        partdic = {'NAME': name, 'DAY': day, 'HOUR': hour, 'PAY': pay, 'CASH': cash, 'MEMO': memo, 'IsNowCash': cashStatus,
+                   'Status': status, 'ParkingStatus': parkingStatus, 'ParkStatusZh': parkingStatusZh, 'Longitude': lon,
+                   'Latitude': lat}
+        partslist.append(partdic)
+
+    return partslist
+
+

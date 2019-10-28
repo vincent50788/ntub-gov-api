@@ -21,11 +21,13 @@ def time_to_getup():
 
 scheduler = BlockingScheduler(timezone=timez)
 
-scheduler.add_job(time_to_getup, 'interval', minutes=10)
-scheduler.add_job(weather_crawler, trigger='interval', minutes=20)
-scheduler.add_job(aqi_crawler, trigger='interval', minutes=20)
+scheduler.add_job(time_to_getup, 'interval', minutes=30)
+
+scheduler.add_job(weather_crawler, trigger='interval', minutes=60)
+scheduler.add_job(aqi_crawler, trigger='interval', minutes=60)
 scheduler.add_job(oil_crawler, trigger='cron', hour='0-1', minute='0-59')
-scheduler.add_job(alert_crawler, 'interval', minutes=5)
+scheduler.add_job(alert_crawler, 'interval', minutes=30)
+scheduler.add_job(pre_weather, 'interval', minutes=60)
 
 scheduler.start()
 
