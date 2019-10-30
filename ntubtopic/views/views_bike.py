@@ -20,10 +20,10 @@ def get_all_bikes(request):
                 bike['Longitude'] = a['StationLongitude']
                 bike['Latitude'] = a['StationLatitude']
                 bike['stationAddress_zh'] = a['stationAddress_zh']
-                bike['BikesCapacity'] = a['BikesCapacity']
-                bike['ServieAvailable'] = a['ServieAvailable']
-                bike['AvailableRentBikes']  = a['AvailableRentBikes']
-                bike['AvailableReturnBikes'] = a['AvailableReturnBikes']
+                bike['BikesCapacity'] = str(a['BikesCapacity'])
+                bike['ServieAvailable'] = str(a['ServieAvailable'])
+                bike['AvailableRentBikes'] = str(a['AvailableRentBikes'])
+                bike['AvailableReturnBikes'] = str(a['AvailableReturnBikes'])
                 bike['UpdateTime'] = a['UpdateTime']
                 bikes.append(bike)
 
@@ -77,10 +77,10 @@ def get_close_bike(request):
                         results['Longitude'] = b['StationLongitude']
                         results['Latitude'] = b['StationLatitude']
                         results['stationAddress_zh'] = b['stationAddress_zh']
-                        results['BikesCapacity'] = b['BikesCapacity']
-                        results['ServieAvailable'] = b['ServieAvailable']
-                        results['AvailableRentBikes'] = b['AvailableRentBikes']
-                        results['AvailableReturnBikes'] = b['AvailableReturnBikes']
+                        results['BikesCapacity'] = str(b['BikesCapacity'])
+                        results['ServieAvailable'] = str(b['ServieAvailable'])
+                        results['AvailableRentBikes'] = str(b['AvailableRentBikes'])
+                        results['AvailableReturnBikes'] = str(b['AvailableReturnBikes'])
                         results['UpdateTime'] = b['UpdateTime']
 
             elif user_type == "2":      # 自己最近有可租借bike站點
@@ -107,10 +107,10 @@ def get_close_bike(request):
                         results['Longitude'] = c['StationLongitude']
                         results['Latitude'] = c['StationLatitude']
                         results['stationAddress_zh'] = c['stationAddress_zh']
-                        results['BikesCapacity'] = c['BikesCapacity']
-                        results['ServieAvailable'] = c['ServieAvailable']
-                        results['AvailableRentBikes'] = c['AvailableRentBikes']
-                        results['AvailableReturnBikes'] = c['AvailableReturnBikes']
+                        results['BikesCapacity'] = str(c['BikesCapacity'])
+                        results['ServieAvailable'] = str(c['ServieAvailable'])
+                        results['AvailableRentBikes'] = str(c['AvailableRentBikes'])
+                        results['AvailableReturnBikes'] = str(c['AvailableReturnBikes'])
                         results['UpdateTime'] = c['UpdateTime']
 
             elif user_type == "3":      # 自己最近有可歸還bike站點
@@ -137,10 +137,10 @@ def get_close_bike(request):
                         results['Longitude'] = c['StationLongitude']
                         results['Latitude'] = c['StationLatitude']
                         results['stationAddress_zh'] = c['stationAddress_zh']
-                        results['BikesCapacity'] = c['BikesCapacity']
-                        results['ServieAvailable'] = c['ServieAvailable']
-                        results['AvailableRentBikes'] = c['AvailableRentBikes']
-                        results['AvailableReturnBikes'] = c['AvailableReturnBikes']
+                        results['BikesCapacity'] = str(c['BikesCapacity'])
+                        results['ServieAvailable'] = str(c['ServieAvailable'])
+                        results['AvailableRentBikes'] = str(c['AvailableRentBikes'])
+                        results['AvailableReturnBikes'] = str(c['AvailableReturnBikes'])
                         results['UpdateTime'] = c['UpdateTime']
 
             else:

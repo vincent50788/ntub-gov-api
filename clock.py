@@ -13,10 +13,10 @@ timez = pytz.timezone('Asia/Taipei')  # 台北時區
 
 
 def time_to_getup():
-    print("wakeup 10 minutes")
+
     url = 'https://topic-ntub.herokuapp.com/'
     re = requests.get(url)
-    print(re)
+
 
 
 scheduler = BlockingScheduler(timezone=timez)
