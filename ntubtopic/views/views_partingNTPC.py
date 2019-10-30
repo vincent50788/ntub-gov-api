@@ -447,7 +447,7 @@ def PostNTPCPart(request):
 
         return JsonResponse(result, safe=False)
 
-    elif contain == "1" and type_ == "7":  # 離自己500m的所有空車位(不包含 非收費時段 時段性禁停)
+    elif contain == "1" and type_ == "7":  # 離自己1000m的所有空車位(不包含 非收費時段 時段性禁停)
 
         for a in datas:
             if a['ParkingStatus'] == '2':  # 不包含 非收費時段 時段性禁停
@@ -487,7 +487,7 @@ def PostNTPCPart(request):
 
         return JsonResponse(result)
 
-    elif contain == "1" and type_ == "8":  # 離自己500m的所有空車位(包含 非收費時段 時段性禁停)
+    elif contain == "1" and type_ == "8":  # 離自己1000m的所有空車位(包含 非收費時段 時段性禁停)
 
         for a in datas:
             if a['ParkingStatus'] != '1':  # 包含 非收費時段 時段性禁停
@@ -641,4 +641,9 @@ def PostNTPCPart(request):
         except Exception as e:
             result['error'] = str(e)
 
+        return JsonResponse(result)
+
+    else:
+        result['result'] = 1
+        result['type'] = 'KeyError'
         return JsonResponse(result)
