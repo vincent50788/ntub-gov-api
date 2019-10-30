@@ -216,7 +216,7 @@ def weather_crawler():
                     uvi_h = "保養中"
                     uvi_status = "保養中"
                 else:
-                    if float(uvi_h) > 0 and float(uvi_h) <= 2:
+                    if float(uvi_h) >= 0 and float(uvi_h) <= 2:
                         uvi_status = "低量級"
                     elif float(uvi_h) > 2 and float(uvi_h) <= 5:
                         uvi_status = "中量級"
@@ -400,5 +400,49 @@ def parting_ntpc():
         partslist.append(partdic)
 
     return partslist
+
+
+def bike_crawler():
+    # https://ptx.transportdata.tw/MOTC?t=Bike&v=2#!/Bike/BikeApi_Availability
+    bikeList = []
+    # get id
+    url_id = "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Taipei?$format=JSON"
+    re_id = requests.get(url_id, verify=False)
+    js_id = json.loads(re_id.content)
+
+    # get available bike
+    url_bike = "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Taipei?$format=JSON"
+    re_bike = requests.get(url_bike, verify=False)
+    js_bike = json.loads(re_bike.content)
+
+    for a in js_id:
+        for b in js_bike:
+            if a['StationUID'] == b['StationUID']:
+                stationUID = a['StationUID']
+                stationID = a['StationID']
+                stationName_zh = a['StationName']['Zh_tw']
+                stationName_en = a['StationName']['En']
+                stationLatitude = a['StationPosition']['PositionLat']
+                stationLongitude = a['StationPosition']['PositionLon']
+                stationAddress_zh = a['StationAddress']['Zh_tw']
+                stationAddress_en = a['StationAddress']['En']
+                bikesCapacity = a['BikesCapacity']
+                servieAvailable = b['ServieAvailable']  # 服務狀態:[0:'停止營運',1:'正常營運']
+                availableRentBikes = b['AvailableRentBikes']  # 可租借個數
+                availableReturnBikes = b['AvailableReturnBikes']  # 可歸還數
+                updateTime = a['UpdateTime']
+        bikedic = {'StationUID': stationUID, 'StationID': stationID, 'StationName_zh': stationName_zh, 'StationLatitude': stationLatitude,
+                   'StationLongitude': stationLongitude, 'stationAddress_zh': stationAddress_zh, 'BikesCapacity': bikesCapacity,
+                   'ServieAvailable': servieAvailable, 'AvailableRentBikes': availableRentBikes, 'AvailableReturnBikes': availableReturnBikes,
+                   'UpdateTime': updateTime}
+        bikeList.append(bikedic)
+
+    return bikeList
+
+
+
+
+
+
 
 
