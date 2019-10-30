@@ -69,7 +69,12 @@ DEBUG = False
 
 #### ParkNTPC(新北市停車格)
 > Resource = https://data.ntpc.gov.tw/od/data/api/1A71BA9C-EF21-4524-B882-6D085DF2877A?$format=json  
-> API = https://topic-ntub.herokuapp.com/partNTPC/
+> API = https://topic-ntub.herokuapp.com/parkNTPC/
+
+#### Ubike(Taipei) 
+> Resource = https://ptx.transportdata.tw/MOTC?t=Bike&v=2#!/Bike/BikeApi_Availability    
+> API = https://topic-ntub.herokuapp.com/getAllBike/    
+> API = https://topic-ntub.herokuapp.com/getCloseBike/ 
 
 ## Weather(天氣)
 request : 
@@ -271,3 +276,74 @@ response :
     ]
 }
 ```
+
+
+## GetAllBike
+
+request:  
+```json
+{
+   "GetBike": "1"
+}
+```
+    
+respone:
+```json
+{
+   "result": 1,
+   "type": "全部站點",
+   "bikes": [
+        {
+           "StationUID": "TPE0001", 
+           "StationName_zh": "捷運市政府站(3號出口)",  //站名
+           "Longitude": 121.567904444,
+           "Latitude": 25.0408578889,
+           "stationAddress_zh": "忠孝東路/松仁路(東南側)", //站點
+           "BikesCapacity": 180, //可容納腳踏車數
+           "ServieAvailable": 1, //服務狀態[0'停止營運',1'正常營運']
+           "AvailableRentBikes": 121, //可租借
+           "AvailableReturnBikes": 59, //可歸還
+           "UpdateTime": "2019-10-30T11:12:21+08:00"
+        }
+    ]
+}
+```
+
+
+## GetCloseBike
+
+|type |reponse  |
+|:----:|:-----|
+|  "1" | 最近站點 |
+|  "2" | 最近可租借站點 |
+|  "3" | 最近可歸還站點 |
+
+request:  
+```json
+{
+    "Longitude": 121.493009,
+    "Latitude":  25.145936,
+	"type": "1" 
+}
+```
+    
+respone:
+```json
+{ 
+    "result": 1,
+    "type": "自己最近站點",
+    "StationUID": "TPE0242",
+    "StationName_zh": "關渡宮",
+    "Longitude": 121.463161,
+    "Latitude": 25.117472,
+    "stationAddress_zh": "大度路三段301巷223-5號西北側停車場(鄰近關渡宮)",
+    "BikesCapacity": 40,
+    "ServieAvailable": 1,
+    "AvailableRentBikes": 4,
+    "AvailableReturnBikes": 36,
+    "UpdateTime": "2019-10-30T11:22:48+08:00"
+}
+```
+
+
+
