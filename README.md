@@ -238,8 +238,8 @@ response :
 | "1"     |  "7" | 自己1000m的所有空車位("不包含"非收費時段 時段性禁停)   |
 | "1"     |  "8" | 自己1000m的所有空車位("包含"非收費時段 時段性禁停)  |
 | "1"     |  "9" | 自己1500m所有車位   |
-| "1"     |  "10" | 自己500m的所有空車位("不包含"非收費時段 時段性禁停)   |
-| "1"     |  "11" | 自己500m的所有空車位("包含"非收費時段 時段性禁停)   |
+| "1"     |  "10" | 自己1500m的所有空車位("不包含"非收費時段 時段性禁停)   |
+| "1"     |  "11" | 自己1500m的所有空車位("包含"非收費時段 時段性禁停)   |
 
 
 request : 
@@ -299,10 +299,10 @@ respone:
            "Longitude": 121.567904444,
            "Latitude": 25.0408578889,
            "stationAddress_zh": "忠孝東路/松仁路(東南側)", //站點
-           "BikesCapacity": 180, //可容納腳踏車數
-           "ServieAvailable": 1, //服務狀態[0'停止營運',1'正常營運']
-           "AvailableRentBikes": 121, //可租借
-           "AvailableReturnBikes": 59, //可歸還
+           "BikesCapacity": "180", //可容納腳踏車數
+           "ServieAvailable": "1", //服務狀態[0'停止營運',1'正常營運']
+           "AvailableRentBikes": "121", //可租借
+           "AvailableReturnBikes": "59", //可歸還
            "UpdateTime": "2019-10-30T11:12:21+08:00"
         }
     ]
@@ -337,10 +337,10 @@ respone:
     "Longitude": 121.463161,
     "Latitude": 25.117472,
     "stationAddress_zh": "大度路三段301巷223-5號西北側停車場(鄰近關渡宮)",
-    "BikesCapacity": 40,
-    "ServieAvailable": 1,
-    "AvailableRentBikes": 4,
-    "AvailableReturnBikes": 36,
+    "BikesCapacity": "40",
+    "ServieAvailable": "1",
+    "AvailableRentBikes": "4",
+    "AvailableReturnBikes": "36",
     "UpdateTime": "2019-10-30T11:22:48+08:00"
 }
 ```
