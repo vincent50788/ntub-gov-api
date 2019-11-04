@@ -9,6 +9,11 @@ django.setup()
 import json
 import requests
 from datetime import datetime, timedelta
+import base64
+from wsgiref.handlers import format_date_time
+from hashlib import sha1
+import hmac
+from time import mktime
 
 # Table
 from ntubtopic.models import *
@@ -16,6 +21,31 @@ from ntubtopic.models import *
 dateTime_ = datetime.now() + timedelta(hours=8)
 theTime = dateTime_.strftime('%H:%M')
 theDate = dateTime_.strftime('%Y-%m-%d')
+
+app_id = '9485a3d80a6d49ff88239e525bcd8952'
+app_key = 'IZu2bla9851Pv7K9jZ9Jldwikmw'
+
+
+class Auth():
+
+    def __init__(self, app_id, app_key):
+        self.app_id = app_id
+        self.app_key = app_key
+
+    def get_auth_header(self):
+        xdate = format_date_time(mktime(datetime.now().timetuple()))
+        hashed = hmac.new(self.app_key.encode('utf8'), ('x-date: ' + xdate).encode('utf8'), sha1)
+        signature = base64.b64encode(hashed.digest()).decode()
+
+        authorization = 'hmac username="' + self.app_id + '", ' + \
+                        'algorithm="hmac-sha1", ' + \
+                        'headers="x-date", ' + \
+                        'signature="' + signature + '"'
+        return {
+            'Authorization': authorization,
+            'x-date': format_date_time(mktime(datetime.now().timetuple())),
+            'Accept - Encoding': 'gzip'
+        }
 
 
 def spl(value):  # split date & time
@@ -403,46 +433,96 @@ def parting_ntpc():
 
 
 def bike_crawler():
+    au = Auth(app_id, app_key)
+
+    urls_id = ["https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Taipei?$format=JSON",  # 台北
+               "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/NewTaipei?$format=JSON",
+               "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Hsinchu?$format=JSON",
+                "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/MiaoliCounty?$format=JSON",
+               "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/ChanghuaCounty?$format=JSON",
+               "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/PingtungCounty?$format=JSON",
+               "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Taoyuan?$format=JSON",
+               "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Kaohsiung?$format=JSON",
+               "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Tainan?$format=JSON",
+               "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Taichung?$format=JSON"
+    ]
+
+    urls_bike = ["https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Taipei?$format=JSON",
+                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/NewTaipei?$format=JSON",
+                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Hsinchu?$format=JSON",
+                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/MiaoliCounty?$format=JSON",
+                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/ChanghuaCounty?$format=JSON",
+                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/PingtungCounty?$format=JSON",
+                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Taoyuan?$format=JSON",
+                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Kaohsiung?$format=JSON",
+                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Tainan?$format=JSON",
+                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Taichung?$format=JSON"
+
+    ]
+
     # https://ptx.transportdata.tw/MOTC?t=Bike&v=2#!/Bike/BikeApi_Availability
     bikeList = []
+
+    for a in range(len(urls_bike)):
     # get id
-    url_id = "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Taipei?$format=JSON"
-    re_id = requests.get(url_id, verify=False)
-    js_id = json.loads(re_id.content)
+        url_id = urls_id[a]
+        re_id = requests.get(url_id, headers=au.get_auth_header())
+        js_id = json.loads(re_id.content)
 
-    # get available bike
-    url_bike = "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Taipei?$format=JSON"
-    re_bike = requests.get(url_bike, verify=False)
-    js_bike = json.loads(re_bike.content)
+        # get available bike
+        url_bike = urls_bike[0]
+        re_bike = requests.get(url_bike, headers=au.get_auth_header())
+        js_bike = json.loads(re_bike.content)
 
-    for a in js_id:
-        for b in js_bike:
-            if a['StationUID'] == b['StationUID']:
-                stationUID = a['StationUID']
-                stationID = a['StationID']
-                stationName_zh = a['StationName']['Zh_tw']
-                stationName_en = a['StationName']['En']
-                stationLatitude = a['StationPosition']['PositionLat']
-                stationLongitude = a['StationPosition']['PositionLon']
-                stationAddress_zh = a['StationAddress']['Zh_tw']
-                stationAddress_en = a['StationAddress']['En']
-                bikesCapacity = a['BikesCapacity']
-                servieAvailable = b['ServieAvailable']  # 服務狀態:[0:'停止營運',1:'正常營運']
-                availableRentBikes = b['AvailableRentBikes']  # 可租借個數
-                availableReturnBikes = b['AvailableReturnBikes']  # 可歸還數
-                updateTime = a['UpdateTime']
-        bikedic = {'StationUID': stationUID, 'StationID': stationID, 'StationName_zh': stationName_zh, 'StationLatitude': stationLatitude,
-                   'StationLongitude': stationLongitude, 'stationAddress_zh': stationAddress_zh, 'BikesCapacity': bikesCapacity,
-                   'ServieAvailable': servieAvailable, 'AvailableRentBikes': availableRentBikes, 'AvailableReturnBikes': availableReturnBikes,
-                   'UpdateTime': updateTime}
-        bikeList.append(bikedic)
+        for a in js_id:
+            for b in js_bike:
+
+                if a['StationUID'] == b['StationUID']:
+                    stationUID = a['StationUID']
+                    stationID = a['StationID']
+                    stationName_zh = a['StationName']['Zh_tw']
+                    stationName_en = a['StationName']['En']
+                    stationLatitude = a['StationPosition']['PositionLat']
+                    stationLongitude = a['StationPosition']['PositionLon']
+                    stationAddress_zh = a['StationAddress']['Zh_tw']
+                    stationAddress_en = a['StationAddress']['En']
+                    bikesCapacity = a['BikesCapacity']
+                    servieAvailable = b['ServieAvailable']  # 服務狀態:[0:'停止營運',1:'正常營運']
+                    availableRentBikes = b['AvailableRentBikes']  # 可租借個數
+                    availableReturnBikes = b['AvailableReturnBikes']  # 可歸還數
+                    updateTime = a['UpdateTime']
+            bikedic = {'StationUID': stationUID, 'StationID': stationID, 'StationName_zh': stationName_zh, 'StationLatitude': stationLatitude,
+                       'StationLongitude': stationLongitude, 'stationAddress_zh': stationAddress_zh, 'BikesCapacity': bikesCapacity,
+                       'ServieAvailable': servieAvailable, 'AvailableRentBikes': availableRentBikes, 'AvailableReturnBikes': availableReturnBikes,
+                       'UpdateTime': updateTime}
+            bikeList.append(bikedic)
 
     return bikeList
 
 
+def scenicSpot_crawler():  # 觀光景點
+    a = Auth(app_id, app_key)
+
+    # https://ptx.transportdata.tw/MOTC?t=Tourism&v=2#!/Tourism/TourismApi_ScenicSpot
+    scenicList = []
+    # get id
+    url_id = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$format=JSON"
+    re_id = requests.get(url_id, headers=a.get_auth_header())
+    js_id = json.loads(re_id.content)
+
+    for a in js_id:
+        scenicName = a["Name"]
+        scenicAdress = a.get("Address", "none")
+        scenicDescription = a.get("Description", "none")
+        scenicLongitude = a["Position"]["PositionLon"]
+        scenicLatitude = a["Position"]["PositionLat"]
+        scenicPhone = a.get("Phone", "none")
+        scenicOpentime = a.get("OpenTime", "none")
+
+        scenicDic = {'ScenicName': scenicName, 'ScenicAddress': scenicAdress, 'ScenicDescription': scenicDescription, 'ScenicLongitude': scenicLongitude,
+                     'ScenicLatitude': scenicLatitude, 'ScenicPhone': scenicPhone, 'ScenicOpentime': scenicOpentime}
+        scenicList.append(scenicDic)
+    return scenicList
 
 
-
-
-
-
+bike_crawler()

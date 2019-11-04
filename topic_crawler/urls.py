@@ -23,6 +23,7 @@ from ntubtopic.views import views_environmental_warning
 from ntubtopic.views import views_pre_weather
 from ntubtopic.views import views_partingNTPC
 from ntubtopic.views import views_bike
+from ntubtopic.views import views_scenic
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,6 +34,7 @@ urlpatterns = [
     path('preweather/', views_pre_weather.PostPreWeather),
     path('parkNTPC/', views_partingNTPC.PostNTPCPart),
     path('getAllBike/', views_bike.get_all_bikes),
-    path('getCloseBike/', views_bike.get_close_bike)
+    path('getCloseBike/', views_bike.get_close_bike),
+    path('getScenic/', views_scenic.PostScenicSpot)
 ]
 
