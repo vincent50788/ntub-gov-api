@@ -470,7 +470,7 @@ def bike_crawler():
         js_id = json.loads(re_id.content)
 
         # get available bike
-        url_bike = urls_bike[0]
+        url_bike = urls_bike[a]
         re_bike = requests.get(url_bike, headers=au.get_auth_header())
         js_bike = json.loads(re_bike.content)
 
@@ -481,11 +481,11 @@ def bike_crawler():
                     stationUID = a['StationUID']
                     stationID = a['StationID']
                     stationName_zh = a['StationName']['Zh_tw']
-                    stationName_en = a['StationName']['En']
+                    # stationName_en = a['StationName']['En']
                     stationLatitude = a['StationPosition']['PositionLat']
                     stationLongitude = a['StationPosition']['PositionLon']
                     stationAddress_zh = a['StationAddress']['Zh_tw']
-                    stationAddress_en = a['StationAddress']['En']
+                    # stationAddress_en = a['StationAddress']['En']
                     bikesCapacity = a['BikesCapacity']
                     servieAvailable = b['ServieAvailable']  # 服務狀態:[0:'停止營運',1:'正常營運']
                     availableRentBikes = b['AvailableRentBikes']  # 可租借個數
