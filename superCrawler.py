@@ -22,8 +22,11 @@ dateTime_ = datetime.now() + timedelta(hours=8)
 theTime = dateTime_.strftime('%H:%M')
 theDate = dateTime_.strftime('%Y-%m-%d')
 
-app_id = '9485a3d80a6d49ff88239e525bcd8952'
-app_key = 'IZu2bla9851Pv7K9jZ9Jldwikmw'
+# app_id = '9485a3d80a6d49ff88239e525bcd8952'
+# app_key = 'IZu2bla9851Pv7K9jZ9Jldwikmw'
+
+app_id = 'ea0b964c043b4c19a7e8cb52511842be'
+app_key = '3MjiMorUMhlsPR0SbjDCRGS06_s'
 
 
 class Auth():
@@ -432,70 +435,105 @@ def parting_ntpc():
     return partslist
 
 
-def bike_crawler():
+def bike_crawler(city):
     au = Auth(app_id, app_key)
 
-    urls_id = ["https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Taipei?$format=JSON",  # 台北
-               "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/NewTaipei?$format=JSON",
-               "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Hsinchu?$format=JSON",
-                "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/MiaoliCounty?$format=JSON",
-               "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/ChanghuaCounty?$format=JSON",
-               "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/PingtungCounty?$format=JSON",
-               "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Taoyuan?$format=JSON",
-               "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Kaohsiung?$format=JSON",
-               "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Tainan?$format=JSON",
-               "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Taichung?$format=JSON"
-    ]
+    urls_id = {"台北": "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Taipei?$format=JSON",  # 台北
+               "新北": "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/NewTaipei?$format=JSON",
+               "新竹": "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Hsinchu?$format=JSON",
+                "苗栗": "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/MiaoliCounty?$format=JSON",
+               "彰化": "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/ChanghuaCounty?$format=JSON",
+               "屏東": "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/PingtungCounty?$format=JSON",
+               "桃園": "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Taoyuan?$format=JSON",
+               "高雄": "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Kaohsiung?$format=JSON",
+               "台南": "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Tainan?$format=JSON",
+               "台中": "https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Taichung?$format=JSON"
+               }
 
-    urls_bike = ["https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Taipei?$format=JSON",
-                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/NewTaipei?$format=JSON",
-                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Hsinchu?$format=JSON",
-                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/MiaoliCounty?$format=JSON",
-                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/ChanghuaCounty?$format=JSON",
-                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/PingtungCounty?$format=JSON",
-                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Taoyuan?$format=JSON",
-                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Kaohsiung?$format=JSON",
-                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Tainan?$format=JSON",
-                 "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Taichung?$format=JSON"
 
-    ]
+    urls_bike = {"台北": "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Taipei?$format=JSON",
+                 "新北": "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/NewTaipei?$format=JSON",
+                 "新竹": "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Hsinchu?$format=JSON",
+                 "苗栗": "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/MiaoliCounty?$format=JSON",
+                 "彰化": "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/ChanghuaCounty?$format=JSON",
+                 "屏東": "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/PingtungCounty?$format=JSON",
+                 "桃園": "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Taoyuan?$format=JSON",
+                 "高雄": "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Kaohsiung?$format=JSON",
+                 "台南": "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Tainan?$format=JSON",
+                 "台中": "https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Taichung?$format=JSON"
+                 }
 
     # https://ptx.transportdata.tw/MOTC?t=Bike&v=2#!/Bike/BikeApi_Availability
+
     bikeList = []
 
-    for a in range(len(urls_bike)):
     # get id
-        url_id = urls_id[a]
-        re_id = requests.get(url_id, headers=au.get_auth_header())
-        js_id = json.loads(re_id.content)
+    if city == "Taipei":
+        url_id = urls_id["台北"]
+        url_bike = urls_bike["台北"]
+    elif city == "NewTaipei":
+        url_id = urls_id["新北"]
+        url_bike = urls_bike["新北"]
+    elif city == "Hsinchu":
+        url_id = urls_id["新竹"]
+        url_bike = urls_bike["新竹"]
+    elif city == "MiaoliCounty":
+        url_id = urls_id["苗栗"]
+        url_bike = urls_bike["苗栗"]
+    elif city == "ChanghuaCounty":
+        url_id = urls_id["彰化"]
+        url_bike = urls_bike["彰化"]
+    elif city == "PingtungCounty":
+        url_id = urls_id["屏東"]
+        url_bike = urls_bike["屏東"]
+    elif city == "Taoyuan":
+        url_id = urls_id["桃園"]
+        url_bike = urls_bike["桃園"]
+    elif city == "Kaohsiung":
+        url_id = urls_id["高雄"]
+        url_bike = urls_bike["高雄"]
+    elif city == "Tainan":
+        url_id = urls_id["台南"]
+        url_bike = urls_bike["台南"]
+    elif city == "Taichung":
+        url_id = urls_id["台中"]
+        url_bike = urls_bike["台中"]
 
-        # get available bike
-        url_bike = urls_bike[a]
-        re_bike = requests.get(url_bike, headers=au.get_auth_header())
-        js_bike = json.loads(re_bike.content)
+    a = Auth(app_id, app_key)
 
-        for a in js_id:
-            for b in js_bike:
+    re_id = requests.get(url_id, headers=au.get_auth_header(), verify=False)
+    # re_id = requests.get(url_id, verify=False)
+    js_id = json.loads(re_id.content)
+    print(re_id)
+    # get available bike
+    re_bike = requests.get(url_bike, headers=au.get_auth_header(), verify=False)
+    # re_bike = requests.get(url_bike, verify=False)
+    js_bike = json.loads(re_bike.content)
 
-                if a['StationUID'] == b['StationUID']:
-                    stationUID = a['StationUID']
-                    stationID = a['StationID']
-                    stationName_zh = a['StationName']['Zh_tw']
-                    # stationName_en = a['StationName']['En']
-                    stationLatitude = a['StationPosition']['PositionLat']
-                    stationLongitude = a['StationPosition']['PositionLon']
-                    stationAddress_zh = a['StationAddress']['Zh_tw']
-                    # stationAddress_en = a['StationAddress']['En']
-                    bikesCapacity = a['BikesCapacity']
-                    servieAvailable = b['ServieAvailable']  # 服務狀態:[0:'停止營運',1:'正常營運']
-                    availableRentBikes = b['AvailableRentBikes']  # 可租借個數
-                    availableReturnBikes = b['AvailableReturnBikes']  # 可歸還數
-                    updateTime = a['UpdateTime']
-            bikedic = {'StationUID': stationUID, 'StationID': stationID, 'StationName_zh': stationName_zh, 'StationLatitude': stationLatitude,
-                       'StationLongitude': stationLongitude, 'stationAddress_zh': stationAddress_zh, 'BikesCapacity': bikesCapacity,
-                       'ServieAvailable': servieAvailable, 'AvailableRentBikes': availableRentBikes, 'AvailableReturnBikes': availableReturnBikes,
-                       'UpdateTime': updateTime}
-            bikeList.append(bikedic)
+    for a in js_id:
+        for b in js_bike:
+            if a['StationUID'] == b['StationUID']:
+                stationUID = a['StationUID']
+                stationID = a['StationID']
+                stationName_zh = a['StationName']['Zh_tw']
+                # stationName_en = a['StationName']['En']
+                stationLatitude = a['StationPosition']['PositionLat']
+                stationLongitude = a['StationPosition']['PositionLon']
+                stationAddress_zh = a['StationAddress']['Zh_tw']
+                # stationAddress_en = a['StationAddress']['En']
+                bikesCapacity = a['BikesCapacity']
+                servieAvailable = b['ServieAvailable']  # 服務狀態:[0:'停止營運',1:'正常營運']
+                availableRentBikes = b['AvailableRentBikes']  # 可租借個數
+                availableReturnBikes = b['AvailableReturnBikes']  # 可歸還數
+                updateTime = a['UpdateTime']
+        bikedic = {'StationUID': stationUID, 'StationID': stationID, 'StationName_zh': stationName_zh,
+                   'StationLatitude': stationLatitude,
+                   'StationLongitude': stationLongitude, 'stationAddress_zh': stationAddress_zh,
+                   'BikesCapacity': bikesCapacity,
+                   'ServieAvailable': servieAvailable, 'AvailableRentBikes': availableRentBikes,
+                   'AvailableReturnBikes': availableReturnBikes,
+                   'UpdateTime': updateTime}
+        bikeList.append(bikedic)
 
     return bikeList
 
@@ -525,4 +563,4 @@ def scenicSpot_crawler():  # 觀光景點
     return scenicList
 
 
-bike_crawler()
+
