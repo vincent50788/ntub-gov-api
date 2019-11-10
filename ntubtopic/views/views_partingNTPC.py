@@ -46,9 +46,9 @@ def PostNTPCPart(request):
                 park['IsNowCash'] = b['IsNowCash']
                 park['ParkStatus'] = b['ParkingStatus']
                 park['ParkStatusZh'] = b['ParkStatusZh']
-                park['Haversine'] = str(haver)
-                park['Longitude'] = b['Longitude']
-                park['Latitude'] = b['Latitude']
+                park['Haversine'] = str(haver).split(".")[0]
+                park['Longitude'] = float(b['Longitude'])
+                park['Latitude'] = float(b['Latitude'])
                 parks.append(park)
 
             if len(parks) == 0:
@@ -81,9 +81,9 @@ def PostNTPCPart(request):
                     park['IsNowCash'] = b['IsNowCash']
                     park['ParkStatus'] = b['ParkingStatus']
                     park['ParkStatusZh'] = b['ParkStatusZh']
-                    park['Haversine'] = str(haver)
-                    park['Longitude'] = b['Longitude']
-                    park['Latitude'] = b['Latitude']
+                    park['Haversine'] = str(haver).split(".")[0]
+                    park['Longitude'] = float(b['Longitude'])
+                    park['Latitude'] = float(b['Latitude'])
                     parks.append(park)
 
             if len(parks) == 0:
@@ -118,9 +118,9 @@ def PostNTPCPart(request):
                     park['IsNowCash'] = b['IsNowCash']
                     park['ParkStatus'] = b['ParkingStatus']
                     park['ParkStatusZh'] = b['ParkStatusZh']
-                    park['Haversine'] = str(haver)
-                    park['Longitude'] = b['Longitude']
-                    park['Latitude'] = b['Latitude']
+                    park['Haversine'] = str(haver).split(".")[0]
+                    park['Longitude'] = float(b['Longitude'])
+                    park['Latitude'] = float(b['Latitude'])
                     parks.append(park)
 
             if len(parks) == 0:
@@ -161,9 +161,9 @@ def PostNTPCPart(request):
                     park['IsNowCash'] = b['IsNowCash']
                     park['ParkStatus'] = b['ParkingStatus']
                     park['ParkStatusZh'] = b['ParkStatusZh']
-                    park['Haversine'] = str(haver)
-                    park['Longitude'] = b['Longitude']
-                    park['Latitude'] = b['Latitude']
+                    park['Haversine'] = str(haver).split(".")[0]
+                    park['Longitude'] = float(b['Longitude'])
+                    park['Latitude'] = float(b['Latitude'])
                     parks.append(park)
 
             if len(parks) == 0:
@@ -209,9 +209,9 @@ def PostNTPCPart(request):
                         park['IsNowCash'] = c['IsNowCash']
                         park['ParkStatus'] = c['ParkingStatus']
                         park['ParkStatusZh'] = c['ParkStatusZh']
-                        park['Haversine'] = str(haver)
-                        park['Longitude'] = c['Longitude']
-                        park['Latitude'] = c['Latitude']
+                        park['Haversine'] = str(haver).split(".")[0]
+                        park['Longitude'] = float(c['Longitude'])
+                        park['Latitude'] = float(c['Latitude'])
                         parks.append(park)
 
                 if len(parks) == 0:
@@ -265,9 +265,9 @@ def PostNTPCPart(request):
                         park['IsNowCash'] = c['IsNowCash']
                         park['ParkStatus'] = c['ParkingStatus']
                         park['ParkStatusZh'] = c['ParkStatusZh']
-                        park['Haversine'] = str(haver)
-                        park['Longitude'] = c['Longitude']
-                        park['Latitude'] = c['Latitude']
+                        park['Haversine'] = str(haver).split(".")[0]
+                        park['Longitude'] = float(c['Longitude'])
+                        park['Latitude'] = float(c['Latitude'])
                         parks.append(park)
                 if len(parks) == 0:
                     result['result'] = 1
@@ -309,9 +309,9 @@ def PostNTPCPart(request):
                     park['IsNowCash'] = b['IsNowCash']
                     park['ParkStatus'] = b['ParkingStatus']
                     park['ParkStatusZh'] = b['ParkStatusZh']
-                    park['Haversine'] = str(haver)
-                    park['Longitude'] = b['Longitude']
-                    park['Latitude'] = b['Latitude']
+                    park['Haversine'] = str(haver).split(".")[0]
+                    park['Longitude'] = float(b['Longitude'])
+                    park['Latitude'] = float(b['Latitude'])
                     parks.append(park)
 
             if len(parks) == 0:
@@ -348,9 +348,9 @@ def PostNTPCPart(request):
                     park['IsNowCash'] = c['IsNowCash']
                     park['ParkStatus'] = c['ParkingStatus']
                     park['ParkStatusZh'] = c['ParkStatusZh']
-                    park['Haversine'] = str(haver)
-                    park['Longitude'] = c['Longitude']
-                    park['Latitude'] = c['Latitude']
+                    park['Haversine'] = str(haver).split(".")[0]
+                    park['Longitude'] = float(c['Longitude'])
+                    park['Latitude'] = float(c['Latitude'])
                     parks.append(park)
 
             if len(parks) == 0:
@@ -388,9 +388,9 @@ def PostNTPCPart(request):
                     park['IsNowCash'] = c['IsNowCash']
                     park['ParkStatus'] = c['ParkingStatus']
                     park['ParkStatusZh'] = c['ParkStatusZh']
-                    park['Haversine'] = str(haver)
-                    park['Longitude'] = c['Longitude']
-                    park['Latitude'] = c['Latitude']
+                    park['Haversine'] = str(haver).split(".")[0]
+                    park['Longitude'] = float(c['Longitude'])
+                    park['Latitude'] = float(c['Latitude'])
                     parks.append(park)
 
             if len(parks) == 0:
@@ -426,9 +426,9 @@ def PostNTPCPart(request):
                     park['IsNowCash'] = b['IsNowCash']
                     park['ParkStatus'] = b['ParkingStatus']
                     park['ParkStatusZh'] = b['ParkStatusZh']
-                    park['Haversine'] = str(haver)
-                    park['Longitude'] = b['Longitude']
-                    park['Latitude'] = b['Latitude']
+                    park['Haversine'] = str(haver).split(".")[0]
+                    park['Longitude'] = float(b['Longitude'])
+                    park['Latitude'] = float(b['Latitude'])
                     parks.append(park)
 
             if len(parks) == 0:
@@ -465,9 +465,9 @@ def PostNTPCPart(request):
                     park['IsNowCash'] = c['IsNowCash']
                     park['ParkStatus'] = c['ParkingStatus']
                     park['ParkStatusZh'] = c['ParkStatusZh']
-                    park['Haversine'] = str(haver)
-                    park['Longitude'] = c['Longitude']
-                    park['Latitude'] = c['Latitude']
+                    park['Haversine'] = str(haver).split(".")[0]
+                    park['Longitude'] = float(c['Longitude'])
+                    park['Latitude'] = float(c['Latitude'])
                     parks.append(park)
 
             if len(parks) == 0:
@@ -505,9 +505,9 @@ def PostNTPCPart(request):
                     park['IsNowCash'] = c['IsNowCash']
                     park['ParkStatus'] = c['ParkingStatus']
                     park['ParkStatusZh'] = c['ParkStatusZh']
-                    park['Haversine'] = str(haver)
-                    park['Longitude'] = c['Longitude']
-                    park['Latitude'] = c['Latitude']
+                    park['Haversine'] = str(haver).split(".")[0]
+                    park['Longitude'] = float(c['Longitude'])
+                    park['Latitude'] = float(c['Latitude'])
                     parks.append(park)
 
             if len(parks) == 0:
@@ -543,7 +543,7 @@ def PostNTPCPart(request):
                     park['IsNowCash'] = b['IsNowCash']
                     park['ParkStatus'] = b['ParkingStatus']
                     park['ParkStatusZh'] = b['ParkStatusZh']
-                    park['Haversine'] = str(haver)
+                    park['Haversine'] = str(haver).split(".")[0]
                     park['Longitude'] = b['Longitude']
                     park['Latitude'] = b['Latitude']
                     parks.append(park)
@@ -582,9 +582,9 @@ def PostNTPCPart(request):
                     park['IsNowCash'] = c['IsNowCash']
                     park['ParkStatus'] = c['ParkingStatus']
                     park['ParkStatusZh'] = c['ParkStatusZh']
-                    park['Haversine'] = str(haver)
-                    park['Longitude'] = c['Longitude']
-                    park['Latitude'] = c['Latitude']
+                    park['Haversine'] = str(haver).split(".")[0]
+                    park['Longitude'] = float(c['Longitude'])
+                    park['Latitude'] = float(c['Latitude'])
                     parks.append(park)
 
             if len(parks) == 0:
@@ -622,9 +622,10 @@ def PostNTPCPart(request):
                     park['IsNowCash'] = c['IsNowCash']
                     park['ParkStatus'] = c['ParkingStatus']
                     park['ParkStatusZh'] = c['ParkStatusZh']
-                    park['Haversine'] = str(haver)
-                    park['Longitude'] = c['Longitude']
-                    park['Latitude'] = c['Latitude']
+                    park['Haversine'] = str(haver).split(".")[0]
+                    park['Longitude'] = float(c['Longitude'])
+                    park['Latitude'] = float(c['Latitude'])
+
                     parks.append(park)
 
             if len(parks) == 0:
